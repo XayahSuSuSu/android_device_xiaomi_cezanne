@@ -22,8 +22,7 @@ PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-mokee
+    $(LOCAL_PATH)/overlay
 
 # Overlays -- Override vendor ones
 PRODUCT_PACKAGES += \
@@ -35,12 +34,10 @@ PRODUCT_PACKAGES += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    device/xiaomi/lmi \
-    hardware/xiaomi
+    device/xiaomi/lmi
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 2400
-TARGET_SCREEN_WIDTH := 1080
+TARGET_BOOT_ANIMATION_RES := 1080
 
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 29
@@ -82,10 +79,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    mokee.biometrics.fingerprint.inscreen@1.0-service.xiaomi_lmi
-
-PRODUCT_COPY_FILES += \
-    vendor/mokee/config/permissions/vendor.mokee.biometrics.fingerprint.inscreen.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/vendor.mokee.biometrics.fingerprint.inscreen.xml
+    lineage.biometrics.fingerprint.inscreen@1.0-service.xiaomi_lmi
 
 # Fstab
 PRODUCT_COPY_FILES += \
@@ -106,10 +100,6 @@ PRODUCT_BOOT_JARS += \
 # Light
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.xiaomi_lmi
-
-# Livedisplay
-PRODUCT_PACKAGES += \
-    mokee.livedisplay@2.0-service-sdm
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -147,10 +137,6 @@ PRODUCT_BOOT_JARS += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-qti.xml
-
-# Trust HAL
-PRODUCT_PACKAGES += \
-    mokee.trust@1.0-service
 
 # WiFi Display
 PRODUCT_PACKAGES += \
