@@ -1,0 +1,13 @@
+# GPU Labels
+/dev/mali.* u:object_r:gpu_device:s0
+/dev/mtk_disp.* u:object_r:graphics_device:s0
+
+# SysFS Labels
+/sys/devices/platform/11017000.i2c/i2c-5/5-0034/mt6370_pmu_rgbled/leds(/.*)?               u:object_r:sysfs_leds:s0
+/sys/devices/platform/leds-mt65xx/leds/lcd-backlight(/.*)?                                 u:object_r:sysfs_leds:s0
+
+# HALs
+/system/bin/hw/android\.hardware\.light@2\.0-service\.cezanne    u:object_r:mtk_hal_light_exec:s0
+
+# VoLTE
+/system/bin/vtservice           u:object_r:vtservice_exec:s0

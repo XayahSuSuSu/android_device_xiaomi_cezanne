@@ -1,0 +1,6 @@
+allow nfc default_android_service:service_manager { add };
+allow nfc debugfs_ion:dir { search };
+allow nfc system_suspend:binder { call };
+allow nfc system_suspend_hwservice:hwservice_manager { find };
+
+get_prop(nfc, vendor_default_prop)

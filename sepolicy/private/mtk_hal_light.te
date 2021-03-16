@@ -1,0 +1,17 @@
+type mtk_hal_light, domain;
+type mtk_hal_light_exec, exec_type, file_type;
+init_daemon_domain(mtk_hal_light)
+
+hwbinder_use(mtk_hal_light)
+binder_call(mtk_hal_light, system_server)
+
+# System file
+allow mtk_hal_light system_file:dir r_dir_perms;
+allow mtk_hal_light sysfs:file rw_file_perms;
+
+allow mtk_hal_light sysfs_leds:lnk_file r_file_perms;
+allow mtk_hal_light sysfs_leds:file rw_file_perms;
+allow mtk_hal_light sysfs_leds:dir r_dir_perms;
+
+get_prop(mtk_hal_light, hwservicemanager_prop)
+hal_server_domain(mtk_hal_light,hal_light);

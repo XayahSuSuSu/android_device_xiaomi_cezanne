@@ -1,0 +1,8 @@
+allow system_app proc_pagetypeinfo:file r_file_perms;
+allow system_app proc_vmallocinfo:file r_file_perms;
+allow system_app sysfs_zram:dir r_dir_perms;
+allow system_app sysfs_zram:file r_file_perms;
+allow system_app storaged:binder call;
+allow system_app wificond:binder call;
+
+get_prop(system_app, vendor_default_prop)

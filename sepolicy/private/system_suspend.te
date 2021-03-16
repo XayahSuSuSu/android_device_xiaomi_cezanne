@@ -1,0 +1,1 @@
+allow system_suspend nfc:binder { transfer };
