@@ -25,6 +25,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/xiaomi/cezanne/cezanne-vendor.mk)
 
+# Setup dalvik vm configs
+$(call inherit-product, frameworks/native/build/phone-xhdpi-8192-dalvik-heap.mk)
+
 # IMS
 #$(call inherit-product, vendor/mediatek/ims/mtk-ims.mk)
 
@@ -40,7 +43,7 @@ PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(DEVICE_PATH)/overlay
+    $(DEVICE_PATH)/overlay-system
 
 # Dynamic Partitions 
 PRODUCT_EXTRA_VNDK_VERSIONS := 29

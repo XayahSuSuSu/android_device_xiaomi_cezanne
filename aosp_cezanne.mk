@@ -36,10 +36,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_system_ext.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system_ext.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := cezanne
 PRODUCT_NAME := aosp_cezanne
+PRODUCT_DEVICE := cezanne
 PRODUCT_BRAND := Redmi
+PRODUCT_MODEL := M2006J10C
 PRODUCT_MANUFACTURER := Xiaomi
+DEVICE_MAINTAINER := Xayah
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 TARGET_VENDOR := xiaomi
