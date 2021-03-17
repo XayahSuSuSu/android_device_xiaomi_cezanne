@@ -110,3 +110,8 @@ PRODUCT_COPY_FILES += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     lineage.biometrics.fingerprint.inscreen@1.0-service.xiaomi_kona
+
+# XiaomiParts
+PRODUCT_PACKAGES += \
+    XiaomiParts
+
