@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
-** Copyright 2020 Project 404
+** Copyright 2020 PixelExperience
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -35,5 +35,11 @@
          3 = right side
     -->
     <integer name="config_fingerprintSensorLocation">1</integer>
+    
+    <!-- Whether to show min refresh rate in display settings -->
+    <bool name="config_show_min_refresh_rate_switch">true</bool>
+
+    <!-- Whether device supports refresh rate switch -->
+    <bool name="config_supportsRefreshRateSwitch">true</bool>
 
 </resources>

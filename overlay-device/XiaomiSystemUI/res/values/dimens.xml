@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
- * Copyright (c) 2020 Project 404
+ * Copyright (c) 2020 PixelExperience
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,21 @@
 -->
 
 <resources>
-    <!-- for 20dp of padding at 2.75px/dp at default density -->
-    <dimen name="rounded_corner_content_padding">55px</dimen>
-
-    <!-- the padding on the top of the statusbar (usually 0) -->
-    <dimen name="status_bar_padding_top">1dp</dimen>
+    <!-- Set-up for more realistic padding -->
+    <dimen name="rounded_corner_content_padding">10dp</dimen>
 
     <!-- Bottom margin size when fingerprint in display is active -->
     <dimen name="keyguard_indication_margin_bottom">30dp</dimen>
+    
+    <!-- the padding on the start of the statusbar -->
+    <dimen name="status_bar_padding_start">6dp</dimen>
+    
+    <!-- the padding on the end of the statusbar -->
+    <dimen name="status_bar_padding_end">5dp</dimen>
+    
+    <!-- Height of the status bar header bar when on Keyguard -->
+    <dimen name="status_bar_header_height_keyguard">@*android:dimen/status_bar_height</dimen>
+
+    <!-- Margin on the right side of the system icon group on Keyguard. -->
+    <dimen name="system_icons_keyguard_padding_end">5dp</dimen>
 </resources>
