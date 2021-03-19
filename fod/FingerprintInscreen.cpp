@@ -35,7 +35,7 @@
 
 #define FINGERPRINT_ACQUIRED_VENDOR 6
 
-#define BRIGHTNESS_PATH "/sys/class/backlight/panel0-backlight/brightness"
+#define BRIGHTNESS_PATH "/sys/class/leds/lcd-backlight/brightness"
 
 namespace vendor {
 namespace lineage {
