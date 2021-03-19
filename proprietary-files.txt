@@ -1,3 +1,27 @@
 # Bluetooth (aptX) - from begonia-user 10 QP1A.190711.020 20.11.18 release-keys
 lib64/libaptXHD_encoder.so|01379a17d29c1bbc7f6b0325709940ca8cdd7ab8
 lib64/libaptX_encoder.so|fdbca5626fee8607d90bea2a6903eeebf396a7cf
+
+# Camera motor
+vendor/bin/hw/vendor.xiaomi.hardware.motor@1.0-service
+vendor/etc/step_motor/mi_camera_config.xml
+vendor/lib64/hw/vendor.xiaomi.hardware.motor@1.0-impl.so
+vendor/lib64/libmivendor_module_calibration.so
+vendor/lib64/libmivendor_module_hall.so
+vendor/lib64/libmivendor_module_motor.so
+vendor/lib64/mi.motor.daemon.so
+
+# Camera (popup sound effects)
+media/audio/ui/popup_cangmen_down.ogg
+media/audio/ui/popup_cangmen_up.ogg
+media/audio/ui/popup_chilun_down.ogg
+media/audio/ui/popup_chilun_up.ogg
+media/audio/ui/popup_jijia_down.ogg
+media/audio/ui/popup_jijia_up.ogg
+media/audio/ui/popup_mofa_down.ogg
+media/audio/ui/popup_mofa_up.ogg
+media/audio/ui/popup_muqin_down.ogg
+media/audio/ui/popup_muqin_up.ogg
+media/audio/ui/popup_yingyan_down.ogg
+media/audio/ui/popup_yingyan_up.ogg
+

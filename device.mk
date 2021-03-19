@@ -54,6 +54,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.mt6885.rc \
+    init.cezanne.rc \
     fstab.mt6885
 
 # DT2W
@@ -98,10 +99,20 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ImsInit
 
-# WiFi
+# Overlays
 PRODUCT_PACKAGES += \
+    TetheringConfigOverlay \
     WifiOverlay \
-    TetheringConfigOverlay
+    XiaomiBluetooth \
+    XiaomiFrameworks \
+    XiaomiSystemUI
+
+# Overlays - override vendor ones
+PRODUCT_PACKAGES += \
+    FrameworksResCommon \
+    FrameworksResTarget \
+    DevicesOverlay \
+    DevicesAndroidOverlay
     
 # Vendor overlay
 PRODUCT_COPY_FILES += \
