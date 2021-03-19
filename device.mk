@@ -126,3 +126,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     XiaomiParts
 
+# Camera
+PRODUCT_PACKAGES += \
+    CameraGo
+
+
