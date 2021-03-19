@@ -13,5 +13,5 @@
 /system/bin/vtservice           u:object_r:vtservice_exec:s0
 
 # Hals
-/system/bin/hw/pa\.biometrics\.fingerprint\.inscreen@1\.0-service\.kona                     u:object_r:hal_fod_kona_exec:s0
+/system/bin/hw/lineage\.biometrics\.fingerprint\.inscreen@1.0-service\.kona                                      u:object_r:hal_fod_kona_exec:s0
 
