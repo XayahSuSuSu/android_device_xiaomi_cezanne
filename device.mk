@@ -103,7 +103,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     TetheringConfigOverlay \
     WifiOverlay \
-    XiaomiBluetooth \
     XiaomiFrameworks \
     XiaomiSystemUI
 
