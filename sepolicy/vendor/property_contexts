@@ -1,0 +1,28 @@
+# Camera
+vendor.camera.                     u:object_r:vendor_camera_prop:s0
+camera.sensor.rearMain.fuseID      u:object_r:vendor_camera_prop:s0
+camera.sensor.frontAux.fuseID      u:object_r:vendor_camera_prop:s0
+camera.sensor.frontMain.fuseID     u:object_r:vendor_camera_prop:s0
+camera.sensor.rearUltra.fuseID     u:object_r:vendor_camera_prop:s0
+camera.sensor.rearTele.fuseID      u:object_r:vendor_camera_prop:s0
+persist.camera.                    u:object_r:vendor_camera_prop:s0
+
+# Fingerprint
+gf.debug.                                u:object_r:vendor_fp_prop:s0
+persist.vendor.sys.fp.                   u:object_r:vendor_fp_prop:s0
+ro.boot.fpsensor                         u:object_r:vendor_fp_prop:s0
+ro.hardware.fp                           u:object_r:vendor_fp_prop:s0
+vendor.fps_hal.                          u:object_r:vendor_fp_prop:s0
+sys.panel.display                        u:object_r:vendor_fp_prop:s0
+
+# Manufracturer
+ro.product.system.manufacturer           u:object_r:system_manufacturer_prop:s0
+
+# Sensor
+persist.sensor.                          u:object_r:persist_sensors_prop:s0
+
+# Touchfeature
+ro.vendor.touchfeature.type        u:object_r:vendor_touchfeature_prop:s0
+
+# Xiaomi thermal daemon
+vendor.sys.thermal.                      u:object_r:vendor_thermal_normal_prop:s0
