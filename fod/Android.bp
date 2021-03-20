@@ -16,34 +16,31 @@
 cc_binary {
     relative_install_path: "hw",
     defaults: ["hidl_defaults"],
-    name: "vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.davinci",
-    vintf_fragments: ["vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.davinci.xml"],
-    init_rc: ["vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.davinci.rc"],
+    name: "lineage.biometrics.fingerprint.inscreen@1.0-service.xiaomi_cezanne",
+    init_rc: ["lineage.biometrics.fingerprint.inscreen@1.0-service.xiaomi_cezanne.rc"],
     srcs: [
-	"service.cpp",
-        "FingerprintInscreen.cpp",
+        "service.cpp",
+        "FingerprintInscreen.cpp"
     ],
-    vendor: true,
     shared_libs: [
         "libbase",
         "libhardware",
+        "libhardware_legacy",
         "libhidlbase",
         "liblog",
         "libutils",
         "vendor.goodix.hardware.biometrics.fingerprint@2.1",
         "vendor.lineage.biometrics.fingerprint.inscreen@1.0",
+        "vendor.xiaomi.hardware.displayfeature@1.0",
         "vendor.xiaomi.hardware.fingerprintextension@1.0",
         "vendor.xiaomi.hardware.touchfeature@1.0",
     ],
 }
 
 cc_library_static {
-    name: "libfod_extension.davinci",
-    srcs: ["fod_extension.cpp"],
+    name: "libfod_extension.cezanne",
+    srcs: ["FodExtension.cpp"],
     include_dirs: [
         "frameworks/native/services/surfaceflinger/CompositionEngine/include"
-    ],
-    header_libs: [
-        "generated_kernel_headers",
     ],
 }

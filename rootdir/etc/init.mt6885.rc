@@ -1,79 +1,13 @@
-on init
-    setprop sys.usb.ffs.aio_compat 1
-    
-    # Custom overrides that need to happen right on boot
-    # Override vendor fstab
-    # We only need it to be overridden before things are mounted
-    mount none /system/etc/fstab.mt6885 /vendor/etc/fstab.mt6885 bind
-    
-    # Disable vendor overlay
-    mount none /vendor/lost+found /vendor/overlay bind
-    
-    # HACK: Disable Keymaster beanpod
-    mount none /system/etc/init/android.hardware.keymaster@4.0-service.beanpod.rc /vendor/etc/init/android.hardware.keymaster@4.0-service.beanpod.rc
-    
-    # DT2W
-    chown system system /dev/input/event3
+import /system/etc/init/init.safailnet.rc
 
-service charger /system/bin/charger
-    class charger
+service citsensor-hal-1-1 /vendor/bin/hw/vendor.xiaomi.hardware.citsensorservice@1.1-service
+    override
+    class late_start
     user system
-    group system graphics input
-    capabilities SYS_BOOT
-    seclabel u:r:charger:s0
+    group system input
 
-on property:persist.sys.cezanne.dt2w=0
-    exec /system/bin/sendevent /dev/input/event3 0 1 4
+on property:init.svc.cnss_diag=running
+    stop cnss_diag
 
-on property:persist.sys.cezanne.dt2w=1
-    exec /system/bin/sendevent /dev/input/event3 0 1 5
-
-on charger
-    write /proc/hps/enabled 0
-    write /sys/devices/system/cpu/cpu0/online 1
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
-    write /sys/devices/system/cpu/cpu7/online 0
-    write /sys/devices/system/cpu/cpu6/online 0
-    write /sys/devices/system/cpu/cpu5/online 0
-    write /sys/devices/system/cpu/cpu4/online 0
-
-    write /sys/power/pm_async 0
-    
-    # Turn backlight on and switch to backlight trigger
-    write /sys/class/leds/lcd-backlight/brightness "1000"
-    write /sys/class/leds/lcd-backlight/trigger "backlight"
-
-on fs
-    mount_all /vendor/etc/fstab.mt6885 --early
-    mount_all /vendor/etc/fstab.mt6885 --late
-
-on post-fs
-    # Unmount the overridden fstab because the SELinux label is incorrect
-    # and some MTK daemons can crash because of that
-    # (at post-fs, the fstab has already been used to mount the partitions,
-    #  so it is fine to just revert back)
-    umount /vendor/etc/fstab.mt6885
-
-    # Disable OEM Lights 
-    mount none /dev/null vendor/lib/hw/lights.mt6885.so bind
-    mount none /dev/null vendor/lib/hw/android.hardware.light@2.0-impl-mediatek.so bind
-    mount none /dev/null vendor/bin/hw/android.hardware.light@2.0-service-mediatek bind
-    mount none /dev/null vendor/lib64/hw/lights.mt6885.so bind
-    mount none /dev/null vendor/lib64/hw/android.hardware.light@2.0-impl-mediatek.so bind
-    mount none /dev/null vendor/etc/init/android.hardware.light@2.0-service-mediatek.rc bind
-    
-    mount none /system/etc/audio_policy_configuration.xml /vendor/etc/audio_policy_configuration.xml bind
-
-on post-fs-data
-    # Correct VideoCodec permission
-    chmod 0666 /dev/video0
-    chmod 0666 /dev/video1
-
-on boot
-    setprop init.svc.console stopped
-
-# Disable AOSP RIL if MTK RIL is up
-on property:vendor.ril.mtk=1
-    stop vendor.ril-daemon
+on property:init.svc.vendor.ipacm-diag=running
+    stop vendor.ipacm-diag

@@ -1,4 +1,0 @@
-allow init vendor_configs_file:{ dir file } mounton;
-allow init vendor_overlay_file:{ dir file } mounton;
-allow init vendor_file:file { execute };
-allow init unlabeled:file { execute execute_no_trans };

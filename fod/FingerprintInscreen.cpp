@@ -21,11 +21,7 @@
 #include <android-base/logging.h>
 #include <fstream>
 #include <cmath>
-#include <thread>
-
-#include <fcntl.h>
-#include <poll.h>
-#include <sys/stat.h>
+#include <hardware_legacy/power.h>
 
 #define FINGERPRINT_ACQUIRED_VENDOR 6
 
@@ -35,34 +31,23 @@
 
 #define TOUCH_FOD_ENABLE 10
 
-#define FOD_UI_PATH "/sys/devices/platform/soc/soc:qcom,dsi-display/fod_ui"
+#define FOD_SENSOR_X 439
+#define FOD_SENSOR_Y 1732
+#define FOD_SENSOR_SIZE 202
 
-#define FOD_SENSOR_X 445
-#define FOD_SENSOR_Y 1931
-#define FOD_SENSOR_SIZE 190
+#define BRIGHTNESS_PATH "/sys/devices/platform/disp_leds/leds/lcd-backlight/brightness"
 
 namespace {
 
-static bool readBool(int fd) {
-    char c;
-    int rc;
-
-    rc = lseek(fd, 0, SEEK_SET);
-    if (rc) {
-        LOG(ERROR) << "failed to seek fd, err: " << rc;
-        return false;
-    }
-
-    rc = read(fd, &c, sizeof(char));
-    if (rc != 1) {
-        LOG(ERROR) << "failed to read bool from fd, err: " << rc;
-        return false;
-    }
-
-    return c != '0';
+template <typename T>
+static T get(const std::string& path, const T& def) {
+    std::ifstream file(path);
+    T result;
+    file >> result;
+    return file.fail() ? def : result;
 }
 
-} // anonymous namespace
+}  // anonymous namespace
 
 namespace vendor {
 namespace lineage {
@@ -73,33 +58,9 @@ namespace V1_0 {
 namespace implementation {
 
 FingerprintInscreen::FingerprintInscreen() {
+    displayFeatureService = IDisplayFeature::getService();
     touchFeatureService = ITouchFeature::getService();
     xiaomiFingerprintService = IXiaomiFingerprint::getService();
-
-    std::thread([this]() {
-        int fd = open(FOD_UI_PATH, O_RDONLY);
-        if (fd < 0) {
-            LOG(ERROR) << "failed to open fd, err: " << fd;
-            return;
-        }
-
-        struct pollfd fodUiPoll = {
-            .fd = fd,
-            .events = POLLERR | POLLPRI,
-            .revents = 0,
-        };
-
-        while (true) {
-            int rc = poll(&fodUiPoll, 1, -1);
-            if (rc < 0) {
-                LOG(ERROR) << "failed to poll fd, err: " << rc;
-                continue;
-            }
-
-            xiaomiFingerprintService->extCmd(COMMAND_NIT,
-                    readBool(fd) ? PARAM_NIT_FOD : PARAM_NIT_NONE);
-        }
-    }).detach();
 }
 
 Return<int32_t> FingerprintInscreen::getPositionX() {
@@ -123,20 +84,28 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 }
 
 Return<void> FingerprintInscreen::onPress() {
+    acquire_wake_lock(PARTIAL_WAKE_LOCK, LOG_TAG);
+    xiaomiFingerprintService->extCmd(COMMAND_NIT, PARAM_NIT_FOD);
     return Void();
 }
 
 Return<void> FingerprintInscreen::onRelease() {
+    touchFeatureService->resetTouchMode(TOUCH_FOD_ENABLE);
+    xiaomiFingerprintService->extCmd(COMMAND_NIT, PARAM_NIT_NONE);
+    release_wake_lock(LOG_TAG);
     return Void();
 }
 
 Return<void> FingerprintInscreen::onShowFODView() {
+    displayFeatureService->setFeature(0, 17, 1, 1);
     touchFeatureService->setTouchMode(TOUCH_FOD_ENABLE, 1);
     return Void();
 }
 
 Return<void> FingerprintInscreen::onHideFODView() {
     touchFeatureService->resetTouchMode(TOUCH_FOD_ENABLE);
+    displayFeatureService->setFeature(0, 17, 0, 1);
+    xiaomiFingerprintService->extCmd(COMMAND_NIT, PARAM_NIT_NONE);
     return Void();
 }
 
@@ -168,7 +137,7 @@ Return<bool> FingerprintInscreen::handleAcquired(int32_t acquiredInfo, int32_t v
 }
 
 Return<bool> FingerprintInscreen::handleError(int32_t error, int32_t vendorCode) {
-    LOG(ERROR) << "error: " << error << ", vendorCode: " << vendorCode;
+    LOG(ERROR) << "error: " << error << ", vendorCode: " << vendorCode << "\n";
     return false;
 }
 
@@ -176,8 +145,19 @@ Return<void> FingerprintInscreen::setLongPressEnabled(bool) {
     return Void();
 }
 
-Return<int32_t> FingerprintInscreen::getDimAmount(int32_t /* brightness */) {
-    return 0;
+Return<int32_t> FingerprintInscreen::getDimAmount(int32_t) {
+    int realBrightness = get(BRIGHTNESS_PATH, 0);
+    float alpha;
+
+    if (realBrightness > 9) {
+        alpha = (255 + ((-8.08071) * pow(realBrightness, 0.45)));
+    } else {
+        alpha = (255 + ((-10.08071) * pow(realBrightness, 0.45)));
+    }
+
+    if (alpha < 0.82) alpha += 0.1;
+
+    return alpha;
 }
 
 Return<bool> FingerprintInscreen::shouldBoostBrightness() {

@@ -16,21 +16,15 @@
      limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.lineageos.settings"
+    package="org.mokee.settings"
     android:versionCode="1"
     android:versionName="1.0"
     android:sharedUserId="android.uid.system">
 
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <protected-broadcast android:name="com.android.systemui.doze.pulse" />
-
-    <permission
-        android:name="org.pixelexperience.device.MANAGE_POPUP_CAMERA_SERVICE"
-        android:protectionLevel="signature|privileged" />
 
     <uses-sdk
         android:minSdkVersion="24"
@@ -47,25 +41,16 @@
             </intent-filter>
         </receiver>
 
-        <activity
-            android:name=".dirac.DiracActivity"
-            android:label="@string/dirac_title"
-            android:theme="@style/Theme.Main">
-            <intent-filter>
-                <action android:name="com.android.settings.action.IA_SETTINGS" />
-            </intent-filter>
-            <meta-data android:name="com.android.settings.category"
-                       android:value="com.android.settings.category.ia.sound" />
-        </activity>
-
         <service android:name=".doze.DozeService"
                  android:permission="XiaomiDozeService">
         </service>
 
-        <service android:name="org.lineageos.settings.popupcamera.PopupCameraService"
-                 android:permission="org.pixelexperience.device.MANAGE_POPUP_CAMERA_SERVICE"
-                 android:exported="true"
-                 android:directBootAware="true">
+        <service android:name=".fod.FodService"
+                 android:permission="FodService">
+        </service>
+
+        <service android:name=".popupcamera.PopupCameraService"
+                 android:permission="PopupCameraService">
         </service>
 
         <activity
@@ -76,11 +61,12 @@
 
         <activity
             android:name=".popupcamera.PopupCameraSettingsActivity"
-            android:label="@string/popup_settings_title"
+            android:label="@string/popup_title"
             android:theme="@style/Theme.Main">
             <intent-filter>
                 <action android:name="com.android.settings.action.IA_SETTINGS" />
             </intent-filter>
+
             <meta-data
                 android:name="com.android.settings.category"
                 android:value="com.android.settings.category.ia.system" />
@@ -95,27 +81,5 @@
                 android:value="-255" />
         </activity>
 
-        <activity
-            android:name=".thermal.ThermalActivity"
-            android:label="@string/thermal_title"
-            android:theme="@style/Theme.Main">
-            <intent-filter>
-                <action android:name="com.android.settings.action.IA_SETTINGS" />
-            </intent-filter>
-            <meta-data
-                android:name="com.android.settings.category"
-                android:value="com.android.settings.category.ia.battery" />
-            <meta-data
-                android:name="com.android.settings.summary"
-                android:resource="@string/thermal_summary" />
-            <meta-data
-                android:name="com.android.settings.order"
-                android:value="1" />
-        </activity>
-
-        <service
-            android:name=".thermal.ThermalService"
-            android:permission="ThermalService">
-        </service>
     </application>
 </manifest>

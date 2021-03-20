@@ -22,15 +22,7 @@
         android:disableDependentsState="true"
         android:title="@string/ambient_display_always_on_title"
         android:summary="@string/ambient_display_always_on_summary"
-        android:persistent="false"
-        android:icon="@drawable/ic_eye" />
-
-    <SwitchPreference
-        android:key="wake_on_gesture"
-        android:defaultValue="false"
-        android:icon="@drawable/ic_doze_wake"
-        android:title="@string/wake_on_gesture_title"
-        android:summary="@string/wake_on_gesture_summary" />
+        android:persistent="false" />
 
     <PreferenceCategory
         android:key="pickup_sensor"
@@ -40,8 +32,7 @@
             android:key="gesture_pick_up"
             android:defaultValue="false"
             android:title="@string/pick_up_gesture_title"
-            android:summary="@string/pick_up_gesture_summary"
-            android:icon="@drawable/ic_pickup" />
+            android:summary="@string/pick_up_gesture_summary" />
 
     </PreferenceCategory>
 
@@ -53,15 +44,13 @@
             android:key="gesture_hand_wave"
             android:defaultValue="false"
             android:title="@string/hand_wave_gesture_title"
-            android:summary="@string/hand_wave_gesture_summary"
-            android:icon="@drawable/ic_hand" />
+            android:summary="@string/hand_wave_gesture_summary" />
 
         <SwitchPreference
             android:key="gesture_pocket"
             android:defaultValue="false"
             android:title="@string/pocket_gesture_title"
-            android:summary="@string/pocket_gesture_summary"
-            android:icon="@drawable/ic_pocket" />
+            android:summary="@string/pocket_gesture_summary" />
 
     </PreferenceCategory>
 
