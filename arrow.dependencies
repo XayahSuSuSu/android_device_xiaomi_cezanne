@@ -1,10 +1,12 @@
 [
   {
-    "repository": "android_vendor_xiaomi_lmi",
-    "target_path": "vendor/xiaomi/lmi"
+    "repository" : "PixelExperience/vendor_mediatek_interfaces",
+    "target_path": "vendor/mediatek/interfaces",
+    "branch"     : "eleven"
   },
   {
-    "repository": "android_packages_apps_GCamGOPrebuilt",
-    "target_path": "packages/apps/GCamGOPrebuilt"
+    "repository" : "PixelExperience/vendor_mediatek_ims",
+    "target_path": "vendor/mediatek/ims",
+    "branch"     : "eleven"
   }
 ]
