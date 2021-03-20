@@ -34,8 +34,6 @@ PRODUCT_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     device/xiaomi/cezanne \
-    vendor/qcom/opensource/commonsys/packages/apps/Bluetooth \
-    vendor/qcom/opensource/commonsys/system/bt/conf
 
 # Boot animation
 TARGET_BOOT_ANIMATION_RES := 1080
@@ -66,7 +64,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    BluetoothQti
+    libldacBT_dec
 
 # Camera
 ifeq ($(ARROW_GAPPS), true)
