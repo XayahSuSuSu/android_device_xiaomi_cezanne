@@ -33,7 +33,7 @@
 #define FOD_SENSOR_Y 1730
 #define FOD_SENSOR_SIZE 220
 
-#define BRIGHTNESS_PATH "/sys/devices/platform/disp_leds/leds/lcd-backlight/brightness"
+#define BRIGHTNESS_PATH "/sys/class/leds/lcd-backlight/brightness"
 
 namespace vendor {
 namespace lineage {
@@ -113,14 +113,16 @@ Return<void> FingerprintInscreen::onRelease() {
 }
 
 Return<void> FingerprintInscreen::onShowFODView() {
-    xiaomiDisplayFeatureService->setFeature(0, 17, 1, 1);
+    xiaomiDisplayFeatureService->setFeature(0, 17, 1, 255);
+    xiaomiDisplayFeatureService->setFeature(0, 11, 1, 4);
     touchFeatureService->setTouchMode(TOUCH_FOD_ENABLE, 1);
     return Void();
 }
 
 Return<void> FingerprintInscreen::onHideFODView() {
+    xiaomiDisplayFeatureService->setFeature(0, 17, 0, 255);
+    xiaomiDisplayFeatureService->setFeature(0, 11, 0, 4);
     touchFeatureService->resetTouchMode(TOUCH_FOD_ENABLE);
-    xiaomiDisplayFeatureService->setFeature(0, 17, 0, 1);
     return Void();
 }
 
@@ -139,7 +141,7 @@ Return<void> FingerprintInscreen::setLongPressEnabled(bool) {
 }
 
 Return<bool> FingerprintInscreen::shouldBoostBrightness() {
-    return false;
+    return true;
 }
 
 
