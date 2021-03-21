@@ -24,6 +24,6 @@ DEVICE_MAINTAINER := Xayah
 
 PRODUCT_CHARACTERISTICS := nosdcard
 
-BUILD_FINGERPRINT := "Redmi/cezanne/cezanne:11/RKQ1.200826.002/V12.2.1.0.RJKCNXM:user/release-keys"
+BUILD_FINGERPRINT := "Redmi/cezanne/cezanne:11/RP1A.200720.011/21.2.24:user/release-keys"
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi

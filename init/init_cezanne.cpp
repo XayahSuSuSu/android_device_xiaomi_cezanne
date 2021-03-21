@@ -52,20 +52,11 @@ void property_override(char const prop[], char const value[], bool add = true)
 void vendor_load_properties() {
     std::string region = GetProperty("ro.boot.hwc", "");
     std::string product = GetProperty("ro.boot.product.hardware.sku", "");
-
     property_override("ro.oem_unlock_supported", "0");
-    property_override("ro.boot.selinux", "enforcing");
-    property_override("ro.build.description", "wayne-user 8.1.0 OPM1.171019.011 V9.5.11.0.ODCCNFA release-keys");
-    property_override("ro.build.fingerprint", "xiaomi/wayne/wayne:8.1.0/OPM1.171019.011/V9.5.11.0.ODCCNFA:user/release-keys");
-    if (region.find("CN") != std::string::npos) {
-        property_override("ro.product.brand", "Redmi");
-        if (product.find("pro") != std::string::npos) {
-            property_override("ro.product.model", "Redmi K30 Ultra");
-            property_override("ro.product.device", "cezanne");
-        } else {
-            property_override("ro.product.model", "Redmi K30 Ultra");
-        }
-    } else if (region.find("GLOBAL") != std::string::npos) {
-        property_override("ro.product.model", "cezanne");
-    }
+    property_override("ro.boot.selinux", "permissive");
+    property_override("ro.build.description", "cezanne-user 11 RP1A.200720.011 21.2.24 release-keys");
+    property_override("ro.build.fingerprint", "Redmi/cezanne/cezanne:11/RP1A.200720.011/21.2.24:user/release-keys");
+    property_override("ro.product.brand", "Redmi");
+    property_override("ro.product.model", "Redmi K30 Ultra");
+    property_override("ro.product.device", "cezanne");
 }
