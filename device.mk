@@ -64,7 +64,8 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    libldacBT_dec
+    libldacBT_dec \
+    libldacBT_bco
 
 # Camera
 PRODUCT_PACKAGES += \
