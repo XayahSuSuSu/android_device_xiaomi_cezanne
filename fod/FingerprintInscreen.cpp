@@ -29,8 +29,8 @@
 
 #define TOUCH_FOD_ENABLE 10
 
-#define FOD_SENSOR_X 460
-#define FOD_SENSOR_Y 1750
+#define FOD_SENSOR_X 427
+#define FOD_SENSOR_Y 1727
 #define FOD_SENSOR_SIZE 225
 
 #define BRIGHTNESS_PATH "/sys/devices/platform/disp_leds/leds/lcd-backlight/brightness"
