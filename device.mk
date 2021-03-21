@@ -35,6 +35,8 @@ PRODUCT_PACKAGES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
+    TetheringConfigOverlay \
+    WifiOverlay \
     XiaomiFrameworks \
     XiaomiSystemUI
 
