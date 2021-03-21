@@ -65,8 +65,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    libldacBT_dec \
-    libldacBT_bco
+    libldacBT_dec
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -81,7 +80,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    lineage.biometrics.fingerprint.inscreen@1.0-service.xiaomi_kona
+    lineage.biometrics.fingerprint.inscreen@1.0-service.kona
 
 # Fstab
 PRODUCT_COPY_FILES += \

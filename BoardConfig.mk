@@ -130,7 +130,6 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 SELINUX_IGNORE_NEVERALLOWS := true
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
     $(DEVICE_PATH)/sepolicy/private \
-    $(DEVICE_PATH)/sepolicy/public \
 include device/qcom/sepolicy/SEPolicy.mk
 
 # Telephony
