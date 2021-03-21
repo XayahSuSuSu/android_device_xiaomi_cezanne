@@ -33,6 +33,13 @@ PRODUCT_PACKAGES += \
     DevicesOverlay \
     DevicesAndroidOverlay
 
+# Overlays
+PRODUCT_PACKAGES += \
+    TetheringConfigOverlay \
+    WifiOverlay \
+    XiaomiFrameworks \
+    XiaomiSystemUI
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     device/xiaomi/cezanne \

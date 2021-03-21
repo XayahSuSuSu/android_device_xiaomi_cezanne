@@ -1,0 +1,21 @@
+<!--
+    Copyright (C) 2020 Paranoid Android
+    You may obtain a copy of the License at
+         http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="170px"
+    android:height="170px"
+    android:viewportWidth="170"
+    android:viewportHeight="170">
+
+    <path
+        android:fillColor="#000000"
+        android:pathData="M196.755 0H0V208.273C0 116.958 0.153999 68.516 37.062 34.485C73.202 1.163 108.538 0 196.755 0Z" />
+
+</vector> 
