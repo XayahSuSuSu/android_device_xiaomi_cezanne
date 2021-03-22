@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.display;
+package org.mokee.settings.display;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -26,7 +26,7 @@ import androidx.preference.PreferenceFragment;
 import androidx.preference.SwitchPreference;
 import android.provider.Settings;
 
-import org.lineageos.settings.R;
+import org.mokee.settings.R;
 
 import vendor.xiaomi.hardware.touchfeature.V1_0.ITouchFeature;
 

@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.display;
+package org.mokee.settings.display;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
