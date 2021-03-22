@@ -45,6 +45,10 @@
                  android:permission="XiaomiDozeService">
         </service>
 
+        <service android:name=".fod.FodService"
+                 android:permission="FodService">
+        </service>
+
         <service android:name=".popupcamera.PopupCameraService"
                  android:permission="PopupCameraService">
         </service>
@@ -76,20 +80,6 @@
                 android:name="com.android.settings.order"
                 android:value="-255" />
         </activity>
-        
-        <activity
-            android:name=".display.DoubleTapSettingsActivity"
-            android:label="@string/dt2w_enable_title"
-            android:theme="@style/Theme.Main">
-            <intent-filter>
-                <action android:name="com.android.settings.action.IA_SETTINGS" />
-            </intent-filter>
-            <meta-data
-                android:name="com.android.settings.category"
-                android:value="com.android.settings.category.ia.display" />
-            <meta-data
-                android:name="com.android.settings.summary"
-                android:resource="@string/dt2w_enable_summary" />
-        </activity>
+
     </application>
 </manifest>
