@@ -156,3 +156,6 @@ TARGET_ENABLE_MEDIADRM_64 := true
 
 # Mediatek IMS
 TARGET_PROVIDES_MEDIATEK_IMS_STACK := true
+
+# Properties
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
