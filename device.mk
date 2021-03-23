@@ -25,8 +25,7 @@ PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-arrow
+    $(LOCAL_PATH)/overlay-system
 
 # Overlays -- Override vendor ones
 PRODUCT_PACKAGES += \
