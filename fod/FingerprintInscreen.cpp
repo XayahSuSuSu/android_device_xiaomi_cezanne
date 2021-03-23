@@ -29,11 +29,11 @@
 
 #define TOUCH_FOD_ENABLE 10
 
-#define FOD_SENSOR_X 440
+#define FOD_SENSOR_X 420
 #define FOD_SENSOR_Y 1730
-#define FOD_SENSOR_SIZE 220
+#define FOD_SENSOR_SIZE 260
 
-#define BRIGHTNESS_PATH "/sys/devices/platform/disp_leds/leds/lcd-backlight/brightness"
+#define BRIGHTNESS_PATH "/sys/class/leds/lcd-backlight/brightness"
 
 namespace vendor {
 namespace lineage {
